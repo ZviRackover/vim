@@ -281,7 +281,7 @@ linelen(int *has_tab)
     *last = NUL;
     len = linetabsize(line);		/* get line length */
     if (has_tab != NULL)		/* check for embedded TAB */
-	*has_tab = (vim_strrchr(first, TAB) != NULL);
+	*has_tab = (vim_strchr(first, TAB) != NULL);
     *last = save;
 
     return len;
@@ -3861,6 +3861,9 @@ do_ecmd(
      * - or if we are the only window on this file and if ECMD_HIDE is FALSE
      */
     if (  ((!other_file && !(flags & ECMD_OLDBUF))
+	   
+	   
+	   
 	    || (curbuf->b_nwindows == 1
 		&& !(flags & (ECMD_HIDE | ECMD_ADDBUF))))
 	&& check_changed(curbuf, (p_awa ? CCGD_AW : 0)
